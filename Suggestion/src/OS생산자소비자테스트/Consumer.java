@@ -9,11 +9,9 @@ public class Consumer extends Thread{
         this.N = N;
     }
 
-    public void run(){
-        int item;
+    public synchronized void run(){
         for (int i=0; i<N; i++){
-            System.out.println("Consumer cnt = "+i);
-            item = b.remove();
+            System.out.println("Consumer cnt = "+b.remove());
         }
     }
 

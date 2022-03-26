@@ -8,10 +8,10 @@ public class Producer extends Thread{
         this.N = N;
     }
 
-    public void run(){
+    public synchronized void run(){
         for (int i=0; i<N; i++){
-            System.out.println("producer cnt = "+i);
             b.insert(i);
+            System.out.println("Producer cnt = "+i);
         }
     }
 
