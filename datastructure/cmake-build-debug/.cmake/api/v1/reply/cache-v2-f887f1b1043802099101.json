@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/taesunpark/Study/OOP/C \uc790\ub8cc\uad6c\uc870/cmake-build-debug"
+			"value" : "/Users/taesunpark/Study/OOP/datastructure/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -419,7 +419,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/taesunpark/Study/OOP/C \uc790\ub8cc\uad6c\uc870"
+			"value" : "/Users/taesunpark/Study/OOP/datastructure"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -991,7 +991,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/taesunpark/Study/OOP/C \uc790\ub8cc\uad6c\uc870/cmake-build-debug"
+			"value" : "/Users/taesunpark/Study/OOP/datastructure/cmake-build-debug"
 		},
 		{
 			"name" : "C__IS_TOP_LEVEL",
@@ -1015,7 +1015,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/taesunpark/Study/OOP/C \uc790\ub8cc\uad6c\uc870"
+			"value" : "/Users/taesunpark/Study/OOP/datastructure"
 		}
 	],
 	"kind" : "cache",
