@@ -3,4 +3,4 @@ project(C_ C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(C_ linkedList.c)
+add_executable(C_ selectionSort.c insertionSort.c)

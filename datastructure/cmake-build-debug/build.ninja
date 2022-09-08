@@ -46,8 +46,14 @@ cmake_ninja_workdir = /Users/taesunpark/Study/OOP/datastructure/cmake-build-debu
 
 build cmake_object_order_depends_target_C_: phony || CMakeFiles/C_.dir
 
-build CMakeFiles/C_.dir/linkedList.c.o: C_COMPILER__C__Debug /Users/taesunpark/Study/OOP/datastructure/linkedList.c || cmake_object_order_depends_target_C_
-  DEP_FILE = CMakeFiles/C_.dir/linkedList.c.o.d
+build CMakeFiles/C_.dir/selectionSort.c.o: C_COMPILER__C__Debug /Users/taesunpark/Study/OOP/datastructure/selectionSort.c || cmake_object_order_depends_target_C_
+  DEP_FILE = CMakeFiles/C_.dir/selectionSort.c.o.d
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu99
+  OBJECT_DIR = CMakeFiles/C_.dir
+  OBJECT_FILE_DIR = CMakeFiles/C_.dir
+
+build CMakeFiles/C_.dir/insertionSort.c.o: C_COMPILER__C__Debug /Users/taesunpark/Study/OOP/datastructure/insertionSort.c || cmake_object_order_depends_target_C_
+  DEP_FILE = CMakeFiles/C_.dir/insertionSort.c.o.d
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/C_.dir
   OBJECT_FILE_DIR = CMakeFiles/C_.dir
@@ -60,7 +66,7 @@ build CMakeFiles/C_.dir/linkedList.c.o: C_COMPILER__C__Debug /Users/taesunpark/S
 #############################################
 # Link the executable C_
 
-build C_: C_EXECUTABLE_LINKER__C__Debug CMakeFiles/C_.dir/linkedList.c.o
+build C_: C_EXECUTABLE_LINKER__C__Debug CMakeFiles/C_.dir/selectionSort.c.o CMakeFiles/C_.dir/insertionSort.c.o
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk
   OBJECT_DIR = CMakeFiles/C_.dir
   POST_BUILD = :
