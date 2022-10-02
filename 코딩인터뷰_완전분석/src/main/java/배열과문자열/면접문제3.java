@@ -32,7 +32,7 @@ public class 면접문제3 {
         for (int i=0; i<newArray.length; i++){
             result += newArray[i];
         }
-        
+
         return result;
     }
 }
