@@ -62,8 +62,9 @@ int main(){
 
     for (int k = -1; k <= 3; k++) {
 
-        start = clock(); // 시작 시간
-        e = findKthSmallest(L, 100000, karray[k]);
+        start = clock(); // 시작 시간®®
+        int *L1 = buildList(100000, 1, 1000000);
+        e = findKthSmallest(L1, 100000, karray[k]);
         finish = clock(); // 종료 시간
 
         // 정확한 시간 측정을 위한 코드
@@ -71,9 +72,10 @@ int main(){
             continue;
         }
 
-        t = (double)(finish-start)/CLOCKS_PER_SEC;%
+        t = (double)(finish-start)/CLOCKS_PER_SEC;
 
         printf("%d %lf\n", e, t);
+        free(L1);
 
     }
 
