@@ -34,4 +34,19 @@ class VendingMachineTest {
         Assertions.assertThat(vendingMachine.getChanges()).isEqualTo(1500);
     }
 
+    @Test
+    void _500원이_들어있는_자판기에_500원을_차감하면_0원이_된다(){
+        VendingMachine vendingMachine = new VendingMachine(500);
+        vendingMachine.withdraw(500);
+        Assertions.assertThat(vendingMachine.getChanges()).isEqualTo(0);
+    }
+
+    @Test
+    void _0원이_들어있는_자판기에_500원을_차감할_수_없다(){
+        VendingMachine vendingMachine = new VendingMachine(0);
+        Assertions.assertThatIllegalStateException()
+                .isThrownBy(() -> vendingMachine.withdraw(500));
+    }
+
+
 }
