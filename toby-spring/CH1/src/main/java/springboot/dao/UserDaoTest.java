@@ -1,17 +1,17 @@
-package springboot;
+package springboot.dao;
 
-import springboot.dao.UserDao;
 import springboot.domain.User;
 
 import java.sql.SQLException;
 
-public class Main {
+public class UserDaoTest {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        UserDao dao = new UserDao();
+        ConnectionMaker connectionMaker = new DConnectionMaker();
+        UserDao dao = new UserDao(connectionMaker);
 
         User user = new User();
-        user.setId("wh");
-        user.setName("백기선");
+        user.setId("wh1");
+        user.setName("백기선2");
         user.setPassword("married");
 
         dao.add(user);
