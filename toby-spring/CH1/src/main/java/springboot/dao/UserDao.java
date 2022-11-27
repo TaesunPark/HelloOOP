@@ -6,11 +6,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 // 리스트 1-6 독립된 SimpleConnectionMaker를 사용하게 만든 UserDao
 public class UserDao {
     private ConnectionMaker connectionMaker;
-
+    ArrayList list = new ArrayList<>();
 //    public UserDao(){
 //        connectionMaker = new DConnectionMaker(); // 앗! 그런데 여기에는 클래스 이름이 나오네
 //    }
@@ -55,7 +56,4 @@ public class UserDao {
 
         return user;
     }
-
-
-
 }
