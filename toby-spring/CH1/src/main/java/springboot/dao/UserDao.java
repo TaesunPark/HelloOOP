@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 // 리스트 1-6 독립된 SimpleConnectionMaker를 사용하게 만든 UserDao
+
 public class UserDao {
     private ConnectionMaker connectionMaker;
     ArrayList list = new ArrayList<>();
