@@ -14,7 +14,7 @@ public class UserDaoTest {
         ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
         UserDao dao = context.getBean("userDao", UserDao.class);
         User user = new User();
-        user.setId("wh2251");
+        user.setId("wh22512");
         user.setName("백기선2");
         user.setPassword("married");
 

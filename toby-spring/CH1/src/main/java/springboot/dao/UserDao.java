@@ -17,9 +17,14 @@ public class UserDao {
 //        connectionMaker = new DConnectionMaker(); // 앗! 그런데 여기에는 클래스 이름이 나오네
 //    }
 
-    public UserDao(ConnectionMaker connectionMaker){
+    //수정자 메소드 DI 방식
+    public void setConnectionMaker(ConnectionMaker connectionMaker) {
         this.connectionMaker = connectionMaker;
     }
+
+//    public UserDao(ConnectionMaker connectionMaker){
+//        this.connectionMaker = connectionMaker;
+//    }
 
     public void add(User user) throws ClassNotFoundException, SQLException{
         Connection c = connectionMaker.makeConnection();
