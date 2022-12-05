@@ -7,11 +7,11 @@ import java.sql.SQLException;
 
 public class UserDaoConnectionCountingTest {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(CountingDaoFactory.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
         UserDao dao = context.getBean("userDao", UserDao.class);
 
         User user = new User();
-        user.setId("wh22511");
+        user.setId("wh225112");
         user.setName("백기선2");
         user.setPassword("married");
 

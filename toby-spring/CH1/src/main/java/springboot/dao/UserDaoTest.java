@@ -1,7 +1,7 @@
 package springboot.dao;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
 import springboot.domain.User;
 
 import java.sql.SQLException;
@@ -11,10 +11,11 @@ public class UserDaoTest {
         //ConnectionMaker connectionMaker = new DConnectionMaker();
         //UserDao dao = new UserDao(connectionMaker);
         //UserDao dao = new DaoFactory().userDao(); // 팩토리를 사용함.
-        ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
+        //ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
+        ApplicationContext context = new GenericXmlApplicationContext("applicationContext.xml");
         UserDao dao = context.getBean("userDao", UserDao.class);
         User user = new User();
-        user.setId("wh22512");
+        user.setId("wh225121");
         user.setName("백기선2");
         user.setPassword("married");
 

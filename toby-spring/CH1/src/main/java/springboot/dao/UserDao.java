@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class UserDao {
     private ConnectionMaker connectionMaker;
+
     ArrayList list = new ArrayList<>();
 //    public UserDao(){
 //        connectionMaker = new DConnectionMaker(); // 앗! 그런데 여기에는 클래스 이름이 나오네
