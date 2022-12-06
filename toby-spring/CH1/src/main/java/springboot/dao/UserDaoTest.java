@@ -1,10 +1,15 @@
 package springboot.dao;
 
+import static org.junit.Assert.assertThat;
+import org.junit.jupiter.api.Assertions;
+import static org.hamcrest.CoreMatchers.is;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import springboot.domain.User;
 
 import java.sql.SQLException;
+
 
 public class UserDaoTest {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
@@ -12,23 +17,24 @@ public class UserDaoTest {
         //UserDao dao = new UserDao(connectionMaker);
         //UserDao dao = new DaoFactory().userDao(); // 팩토리를 사용함.
         //ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
+    }
+
+    @Test
+    public void addAndGet() throws SQLException, ClassNotFoundException {
         ApplicationContext context = new GenericXmlApplicationContext("applicationContext.xml");
         UserDao dao = context.getBean("userDao", UserDao.class);
         User user = new User();
-        user.setId("wh225121");
-        user.setName("백기선2");
-        user.setPassword("married");
+        user.setId("gyumee1");
+        user.setName("박상철");
+        user.setPassword("springno1");
 
         dao.add(user);
 
         System.out.println(user.getId() + "등록 성공");
 
         User user2 = dao.get(user.getId());
-        System.out.println(user2.getName());
 
-        System.out.println(user2.getPassword());
-
-        System.out.println(user.getId() + "조회 성공");
-
+        assertThat(user2.getName(), is(user.getName()));
+        assertThat(user2.getPassword(), is(user.getPassword()));
     }
 }

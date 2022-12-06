@@ -2,18 +2,24 @@ package springboot.dao;
 
 import springboot.domain.User;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;import java.sql.ResultSet;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 // 리스트 1-6 독립된 SimpleConnectionMaker를 사용하게 만든 UserDao
 
 public class UserDao {
-    private ConnectionMaker connectionMaker;
+     private ConnectionMaker connectionMaker;
+//    private DataSource dataSource;
+//
+//    public void setDataSource(DataSource dataSource) {
+//        this.dataSource = dataSource;
+//    }
 
-    ArrayList list = new ArrayList<>();
 //    public UserDao(){
 //        connectionMaker = new DConnectionMaker(); // 앗! 그런데 여기에는 클래스 이름이 나오네
 //    }
@@ -27,8 +33,9 @@ public class UserDao {
 //        this.connectionMaker = connectionMaker;
 //    }
 
-    public void add(User user) throws ClassNotFoundException, SQLException{
+    public void add(User user) throws SQLException, ClassNotFoundException {
         Connection c = connectionMaker.makeConnection();
+//        Connection c = dataSource.getConnection();
         PreparedStatement ps = c.prepareStatement(
                 "insert into users(id, name, password) values(?,?,?)");
         ps.setString(1, user.getId());
@@ -39,10 +46,10 @@ public class UserDao {
 
         ps.close();
         c.close();
-
     }
 
-    public User get(String id) throws ClassNotFoundException, SQLException{
+    public User get(String id) throws SQLException, ClassNotFoundException {
+//        Connection c = dataSource.getConnection();
         Connection c = connectionMaker.makeConnection();
 
         PreparedStatement ps = c
@@ -63,4 +70,6 @@ public class UserDao {
 
         return user;
     }
+
+    
 }

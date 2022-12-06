@@ -8,5 +8,5 @@
     <bean id="userDao" class="springboot.dao.UserDao">
         <property name="connectionMaker" ref="connectionMaker"></property>
     </bean>
-            
+
 </beans>
