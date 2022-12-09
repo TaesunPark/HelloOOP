@@ -24,7 +24,7 @@ public class UserDaoTest {
         ApplicationContext context = new GenericXmlApplicationContext("applicationContext.xml");
         UserDao dao = context.getBean("userDao", UserDao.class);
         User user = new User();
-        user.setId("gyumee1");
+        user.setId("gyumee13");
         user.setName("박상철");
         user.setPassword("springno1");
 
