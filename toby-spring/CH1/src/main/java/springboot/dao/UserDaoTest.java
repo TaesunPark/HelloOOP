@@ -23,12 +23,15 @@ public class UserDaoTest {
     public void addAndGet() throws SQLException, ClassNotFoundException {
         ApplicationContext context = new GenericXmlApplicationContext("applicationContext.xml");
         UserDao dao = context.getBean("userDao", UserDao.class);
+        dao.deleteAll();
+        assertThat(dao.getCount(), is(0));
         User user = new User();
         user.setId("gyumee13");
         user.setName("박상철");
         user.setPassword("springno1");
 
         dao.add(user);
+        assertThat(dao.getCount(), is(1));
 
         System.out.println(user.getId() + "등록 성공");
 
