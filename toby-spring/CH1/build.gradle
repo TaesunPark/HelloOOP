@@ -14,12 +14,15 @@ repositories {
 dependencies {
     implementation 'mysql:mysql-connector-java:8.0.21'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testImplementation("org.assertj:assertj-core:3.23.1")
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
     implementation 'org.springframework:spring-jdbc:3.0.7.RELEASE'
-    implementation 'org.junit.jupiter:junit-jupiter:5.9.1'
+    implementation group: 'junit', name: 'junit', version: '4.11'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+// https://mvnrepository.com/artifact/org.assertj/assertj-core
+    testImplementation 'org.assertj:assertj-core:3.23.1'
+
+
 }
 
 test {
