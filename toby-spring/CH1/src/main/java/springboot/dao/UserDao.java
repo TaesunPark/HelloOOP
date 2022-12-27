@@ -80,21 +80,77 @@ public class UserDao {
     }
 
     public void deleteAll() throws SQLException{
-        Connection c = dataSource.getConnection();
-        PreparedStatement ps = c.prepareStatement("delete from users");
-        ps.executeUpdate();
+        Connection c = null;
+        PreparedStatement ps = null;
+
+        try {
+            // 예외가 발생할 가능성이 있는 코드를 모두 try 블록으로 묶어준다.
+            c = dataSource.getConnection();
+            ps = c.prepareStatement("delete from users");
+            ps.executeUpdate();
+        }catch (SQLException e){
+            // 예외가 발생했을 때 부가적인 작업을 해줄 수 있도록 catch 블록을 둔다.
+            // 아직은 예외를 다시 메소드 밖으로 던지는 것밖에 없다.
+            throw e;
+        } finally {
+            // finally이므로 try 블록에서 예외가 발생했을 때나 안 했을 때나 모두 실행된다.
+            if(ps != null){
+                try{
+                    ps.close();
+                } catch (SQLException e){
+
+                }
+            }
+            if(c != null){
+                try{
+                    c.close();
+                } catch (SQLException e){
+
+                }
+            }
+        }
 
         ps.close();
         c.close();
     }
 
     public int getCount() throws SQLException{
-        Connection c = dataSource.getConnection();
-        PreparedStatement ps = c.prepareStatement("select count(*) from users");
+        Connection c = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
 
-        ResultSet rs = ps.executeQuery();
-        rs.next();
-        int count = rs.getInt(1);
+        try {
+            c = dataSource.getConnection();
+            ps = c.prepareStatement("select count(*) from users");
+            rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt(1);
+        } catch (SQLException e){
+            throw e;
+        } finally {
+            if(rs != null){
+                try{
+                    rs.close();
+                } catch (SQLException e){
+
+                }
+            }
+            if(ps != null){
+                try{
+                    ps.close();
+                } catch (SQLException e){
+
+                }
+            }
+            if(c != null){
+                try{
+                    c.close();
+                } catch (SQLException e){
+
+                }
+            }
+        }
+
 
         rs.close();
         ps.close();
