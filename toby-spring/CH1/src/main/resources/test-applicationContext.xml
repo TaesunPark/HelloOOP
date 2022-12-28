@@ -10,7 +10,7 @@
         <property name="password" value="12345678"/>
     </bean>
 
-    <bean id="userDao" class="springboot.dao.UserDao">
+    <bean id="userDao" class="springboot.user.UserDao">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 </beans>

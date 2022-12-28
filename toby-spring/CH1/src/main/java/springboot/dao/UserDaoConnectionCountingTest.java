@@ -2,6 +2,7 @@ package springboot.dao;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import springboot.domain.User;
+import springboot.user.UserDao;
 
 import java.sql.SQLException;
 
