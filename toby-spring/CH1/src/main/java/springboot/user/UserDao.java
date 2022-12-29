@@ -39,19 +39,23 @@ public class UserDao {
 //        this.connectionMaker = connectionMaker;
 //    }
 
-    public void add(User user) throws SQLException, ClassNotFoundException {
-     //   Connection c = connectionMaker.makeConnection();
-        Connection c = dataSource.getConnection();
-        PreparedStatement ps = c.prepareStatement(
-                "insert into users(id, name, password) values(?,?,?)");
-        ps.setString(1, user.getId());
-        ps.setString(2, user.getName());
-        ps.setString(3, user.getPassword());
+    public void add(User user) throws SQLException{
 
-        ps.executeUpdate();
+        jdbcContextWithStatementStrategy(
+                new StatementStrategy() {
+                    @Override
+                    public PreparedStatement makePreparedStatement(Connection c) throws SQLException {
+                        PreparedStatement ps = c.prepareStatement("insert into users(id, name, password) values(?,?,?)");
+                        ps.setString(1, user.getId());
+                        ps.setString(2, user.getName());
+                        ps.setString(3, user.getPassword());
+                        return ps;
+                    }
+                }
+        );
 
-        ps.close();
-        c.close();
+//        StatementStrategy st = new AddStatement(user);
+//        jdbcContextWithStatementStrategy(st);
     }
 
     public User get(String id) throws SQLException, ClassNotFoundException {
@@ -83,8 +87,15 @@ public class UserDao {
     }
 
     public void deleteAll() throws SQLException{
-        StatementStrategy st = new DeleteAllStatement(); // 선정한 전략 클래스의 오브젝트 생성
-        jdbcContextWithStatementStrategy(st);
+        jdbcContextWithStatementStrategy(new StatementStrategy() {
+            @Override
+            public PreparedStatement makePreparedStatement(Connection c) throws SQLException {
+                PreparedStatement ps = c.prepareStatement("delete from users");
+                return ps;
+            }
+        });
+//        StatementStrategy st = new DeleteAllStatement(); // 선정한 전략 클래스의 오브젝트 생성
+//        jdbcContextWithStatementStrategy(st);
     }
 
     public int getCount() throws SQLException{
@@ -153,6 +164,4 @@ public class UserDao {
             }
         }
     }
-
-    
 }
