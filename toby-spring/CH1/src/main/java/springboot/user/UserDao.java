@@ -32,7 +32,8 @@ public class UserDao {
     }
 
     public void setDataSource(DataSource dataSource) {
-
+        this.jdbcContext = new JdbcContext(); // JdbcContext -> JdbcContext 생성 (IoC) // 수정자 메소드이면서 JdbcContext에 대한 생성, DI 작업을 동시에 한다.
+        this.jdbcContext.setDataSource(dataSource);
         this.dataSource = dataSource;
 
     }
@@ -93,13 +94,7 @@ public class UserDao {
     }
 
     public void deleteAll() throws SQLException{
-        this.jdbcContext.workWithStatementStrategy(new StatementStrategy() {
-            @Override
-            public PreparedStatement makePreparedStatement(Connection c) throws SQLException {
-                PreparedStatement ps = c.prepareStatement("delete from users");
-                return ps;
-            }
-        });
+        this.jdbcContext.executeSql("delete from users");
     }
 
     public int getCount() throws SQLException{
